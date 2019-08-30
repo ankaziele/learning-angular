@@ -20,6 +20,13 @@ class="form-control"
 >
     Add server
 </button>
-<p>{{ serverCreationStatus }}</p>
-<app-server></app-server>
-<app-server></app-server>
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<p *ngIf="serverCreated; else noServer">The server was created. Server name is {{ serverName }}</p>
+<!-- <p *ngIf="!serverCreated">No server was created</p> -->
+<ng-template #noServer>
+    <p>
+        No server was created
+    </p>
+</ng-template>
+<app-server *ngFor="let server of servers">{{server }}</app-server>
+<!-- <app-server></app-server> -->
